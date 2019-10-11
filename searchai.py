@@ -2,36 +2,65 @@ import random
 import game
 import sys
 import numpy as np
-import heuristicai as heuristic
+
+import heuristicai as ai
+import time
+import multiprocessing as mp
 
 # Author: chrn (original by nneonneo)
 # Date: 11.11.2016
 # Copyright: Algorithm from https://github.com/nneonneo/2048-ai
 # Description: The logic to beat the game.  Based on expectimax algorithm.
+UP, DOWN, LEFT, RIGHT = 0, 1, 2, 3
+move_args = [UP,DOWN,LEFT,RIGHT]
+
 def find_best_move(board):
     """
     find the best move for the next turn.
     """
+    global p
     bestmove = -1
-    depth = 2
-    UP, DOWN, LEFT, RIGHT = 0, 1, 2, 3
-    move_args = [UP,DOWN,LEFT,RIGHT]
     
-    result = [score_toplevel_move(i, board, depth) for i in range(len(move_args))]
-    bestmove = result.index(max(result))
+    emptyTiles = countEmptyTiles(board)
+    biggestTile = getHighestTile(board)
+    start = time.time()
+    if emptyTiles > 8:
+        result = [score_toplevel_move(x, board, 1) for x in range(len(move_args))]
+    elif emptyTiles > 3 or biggestTile < 2048:       
+        result = []
+        r = []  
+        for x in range(len(move_args)):
+            r.append(p.apply_async(score_toplevel_move, (x, board, 2)))
+        for i in range(len(r)):
+            result.append(r[i].get())
+    else:
+        result = []
+        r = []  
+        for x in range(len(move_args)):
+            r.append(p.apply_async(score_toplevel_move, (x, board, 3)))
+        for i in range(len(r)):
+            result.append(r[i].get())
 
-    for m in move_args:
+    bestmove = result.index(max(result))
+    """for m in move_args:
         print("move: %d score: %.4f" % (m, result[m]))
+    print("Time needed = ", time.time() - start)"""
 
     return bestmove
-    
-def score_toplevel_move(move, board, depth):
+
+def countEmptyTiles(board):
+    return np.count_nonzero(board == 0)
+
+def getHighestTile(board):
+    return np.max(board)
+
+def score_toplevel_move(move, board, depth=2):
     """
     Entry Point to score the first move.
     """
     newboard = execute_move(move, board)
     
-    if board_equals(board,newboard) or depth == 0:
+    if board_equals(board,newboard):
         return 0
 	# TODO:
 	# Implement the Expectimax Algorithm.
@@ -40,24 +69,41 @@ def score_toplevel_move(move, board, depth):
 	#		calculate their scores dependence of the probability this will occur.
 	#		(recursively)
 	# 3.) When you reach the leaf calculate the board score with your heuristic.
+    #print(str(depth) + " move: " + str(move))
+    if depth == 0:
+        return ai.get_boardscore(newboard)
+    
+    score = 0
     depth -= 1
-    spawnNr = (newboard == 0).sum() * 2
-    spawnsPossibility = np.array[(spawnNr)]
+    cntEmptyFields = 0
+    for i in range(4):
+        for j in range(4):
+            if newboard[i,j] != 0:
+                continue
+            cntEmptyFields += 1
+            newboard[i,j] = 2
+            maxscore = max([score_toplevel_move(m, np.copy(newboard), depth) for m in range(len(move_args))])
+            score += 0.9 * maxscore
 
-    for i in range(0, spawnNr):
-        probability = i
-        score_toplevel_move(i, board, depth)
-        
-    return random.randint(1,1000)
+            newboard[i,j] = 4
+            maxscore = max([score_toplevel_move(m, np.copy(newboard), depth) for m in range(len(move_args))])
+            score += 0.1 * maxscore
 
+            newboard[i,j] = 0
+    if score == 0:  # no further moves
+        return ai.get_boardscore(newboard)
+    else:
+        cntEmptyFields = max(1,cntEmptyFields)
+        return score / cntEmptyFields
+    
 def execute_move(move, board):
     """
     move and return the grid without a new random tile 
 	It won't affect the state of the game in the browser.
     """
-
+    
     UP, DOWN, LEFT, RIGHT = 0, 1, 2, 3
-
+    
     if move == UP:
         return game.merge_up(board)
     elif move == DOWN:
@@ -73,4 +119,11 @@ def board_equals(board, newboard):
     """
     Check if two boards are equal
     """
-    return  (newboard == board).all()  
+    return  (newboard == board).all()
+
+def main():
+    global p
+    p = mp.Pool(4)
+
+if __name__ == "__main__":
+    main()

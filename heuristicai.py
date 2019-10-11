@@ -87,7 +87,7 @@ def get_boardscore(board):
             if board[i,j] != 0:
                 score += board[i, j]  * factorx * factory * (factoredgex + i + 1) * (factoredgey + j + 2)
             else:
-                score += 4000
+                score += 2000
     return score
     
 def board_equals(board, newboard):

@@ -12,8 +12,8 @@
 
 import time
 
-import heuristicai as ai #for task 4
-#import searchai as ai #for task 5
+#import heuristicai as ai #for task 4
+import searchai as ai #for task 5
 #import heuristicai_SOLUTION as ai #for task 4
 #import searchai_SOLUTION as ai #for task 5
 
@@ -116,8 +116,9 @@ if __name__ == '__main__':
     
     print("Starting Game...")
     print("************************")
-    
+
     arglength = len(sys.argv)
+    ai.main()
 
     if arglength > 3:
         times = int(sys.argv[arglength - 1])
@@ -133,4 +134,3 @@ if __name__ == '__main__':
 
     print("************************\n")
     print("Nr of tries:\t%d\nHighscore:\t%d\nAverage Score:\t%d\n\n" % (times, highscore, (total/times)))
-
