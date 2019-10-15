@@ -79,10 +79,12 @@ def get_boardscore(board):
                 score += board[y, x] * neighbourbonus * edgebonus
             else:
                 score += 20 * (4 - x) * (6 - y) # Reward empty Fields according to their position on the board
+
     return score
 
 def get_edge_distance_bonus(x, y, board):
     bonus = 1
+
     if y == 3:
         if x == 3:
             bonus *= 100 # Bottom right corner bonus
@@ -90,8 +92,8 @@ def get_edge_distance_bonus(x, y, board):
             bonus = 10 * (x + 4)
     elif y == 2:
         bonus = 5 * (4 - x)
-    else:
-        bonus = y * (4 - x)
+    elif y == 1:
+        bonus = 2 * (x + 4)
 
     return bonus
 
