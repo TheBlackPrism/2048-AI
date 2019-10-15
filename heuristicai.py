@@ -69,36 +69,41 @@ def get_boardscore(board):
 
     for y in range(0,4):
         for x in range(0,4):
-            factorx = 1
-            factory = 1
             factoredgex = 1
             factoredgey = 1
 
-            if y > 0 and board[y - 1, x] == board[y, x]:
-                factorx = 2   
-            if x > 0 and board[y, x - 1] == board[y, x]:
-                factory = 2
-
-            if y == 3:
-                if x == 3:
-                    factoredgey = 10
-                    factoredgex = 10
-                else:
-                    factoredgey = 9
-                    factoredgex = x + 4
-            elif y == 2:
-                factoredgey = 5
-                factoredgex = 4 - x
-            else:
-                factoredgey = y
-                factoredgex = 4 - x
+            neighbourbonus = get_neighbour_bonus(x,y,board)
+            edgebonus = get_edge_distance_bonus(x,y,board)
 
             if board[y,x] != 0:
-                score += board[y, x] * factorx * factory * factoredgex * factoredgey
+                score += board[y, x] * neighbourbonus * edgebonus
             else:
                 score += 20 * (4 - x) * (6 - y) # Reward empty Fields according to their position on the board
     return score
-    
+
+def get_edge_distance_bonus(x, y, board):
+    bonus = 1
+    if y == 3:
+        if x == 3:
+            bonus *= 100 # Bottom right corner bonus
+        else:
+            bonus = 10 * (x + 4)
+    elif y == 2:
+        bonus = 5 * (4 - x)
+    else:
+        bonus = y * (4 - x)
+
+    return bonus
+
+def get_neighbour_bonus(x, y, board):
+    bonus = 1
+    if y > 0 and board[y - 1, x] == board[y, x]:
+        bonus *= 2
+    if x > 0 and board[y, x - 1] == board[y, x]:
+        bonus *= 2
+
+    return bonus
+
 def board_equals(board, newboard):
     """
     Check if two boards are equal
