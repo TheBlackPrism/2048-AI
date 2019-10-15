@@ -3,10 +3,9 @@ import game
 import sys
 import numpy as np
 
-# Author:				chrn (original by nneonneo)
-# Date:				    11.11.2016
-# Description:			The logic of the AI to beat the game.
-
+# Author: chrn (original by nneonneo)
+# Date: 11.11.2016
+# Description: The logic of the AI to beat the game.
 UP, DOWN, LEFT, RIGHT = 0, 1, 2, 3
 
 def find_best_move(board):
@@ -14,7 +13,7 @@ def find_best_move(board):
     highscore = 0
     newboard = np.array([0])
 
-    for i in range (0,4):
+    for i in range(0,4):
         newboard = execute_move(i, board)
         score = get_boardscore(newboard)
 
@@ -30,7 +29,7 @@ def double_up(board):
     highscore = 0
     newboard = np.array([0])
 
-    for i in range (0,4):
+    for i in range(0,4):
         newboard = execute_move(i, board)
         score = get_boardscore(newboard)
         if score > highscore and not board_equals(board, newboard):
@@ -68,26 +67,36 @@ def row_full(row):
 def get_boardscore(board):
     score = 0
 
-    for i in range (0,4):
-        for j in range (0,4):
+    for y in range(0,4):
+        for x in range(0,4):
             factorx = 1
             factory = 1
             factoredgex = 1
             factoredgey = 1
 
-            if i > 0 and board[i-1, j] == board[i, j]:
-                factorx = 3   
-            if j > 0 and board[i, j-1] == board[i,j]:
-                factory = 3
-            if i == 3:
-                factoredgex = 4
-            if j == 3:
-                factoredgey = 2
+            if y > 0 and board[y - 1, x] == board[y, x]:
+                factorx = 2   
+            if x > 0 and board[y, x - 1] == board[y, x]:
+                factory = 2
 
-            if board[i,j] != 0:
-                score += board[i, j]  * factorx * factory * (factoredgex + i + 1) * (factoredgey + j + 2)
+            if y == 3:
+                if x == 3:
+                    factoredgey = 10
+                    factoredgex = 10
+                else:
+                    factoredgey = 9
+                    factoredgex = x + 4
+            elif y == 2:
+                factoredgey = 5
+                factoredgex = 4 - x
             else:
-                score += 2000
+                factoredgey = y
+                factoredgex = 4 - x
+
+            if board[y,x] != 0:
+                score += board[y, x] * factorx * factory * factoredgex * factoredgey
+            else:
+                score += 20 * (4 - x) * (6 - y) # Reward empty Fields according to their position on the board
     return score
     
 def board_equals(board, newboard):

@@ -1,22 +1,21 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-# Author:      chrn (original by nneonneo)
-# Date:        11.11.2016, updated by scik 30.08.2019
-# Copyright:   https://github.com/nneonneo/2048-ai
-# Description: Helps the user achieve a high score in a real game of 2048 by using a move searcher.
+# Author: chrn (original by nneonneo)
+# Date: 11.11.2016, updated by scik 30.08.2019
+# Copyright: https://github.com/nneonneo/2048-ai
+# Description: Helps the user achieve a high score in a real game of 2048 by
+# using a move searcher.
 #              This Script initialize the AI and controls the game flow.
 
 
 #from __future__ import print_function
-
 import time
 
 #import heuristicai as ai #for task 4
 import searchai as ai #for task 5
 #import heuristicai_SOLUTION as ai #for task 4
-#import searchai_SOLUTION as ai #for task 5
-
+                     #import searchai_SOLUTION as ai #for task 5
 def print_board(m):
     for row in m:
         for c in row:
@@ -33,7 +32,7 @@ def to_val(m):
 def _to_score(c):
     if c <= 1:
         return 0
-    return (c-1) * (2**c)
+    return (c - 1) * (2 ** c)
 
 def to_score(m):
     return [[_to_score(c) for c in row] for row in m]
@@ -67,6 +66,7 @@ def play_game(gamectrl):
     board = gamectrl.get_board()
     maxval = max(max(row) for row in to_val(board))
     print("Game over. Final score %d; highest tile %d." % (score, maxval))
+    print("Number of Moves %d; Time per Move %f" % (moveno, (time.time() - start) / moveno))
 
 def parse_args(argv):
     import argparse
@@ -124,7 +124,7 @@ if __name__ == '__main__':
         times = int(sys.argv[arglength - 1])
         sys.argv = sys.argv[0:arglength - 3]
 
-    for i in range (0, times):
+    for i in range(0, times):
         game = main(sys.argv[1:])
 
         score = game.get_score()
@@ -133,4 +133,4 @@ if __name__ == '__main__':
             highscore = score
 
     print("************************\n")
-    print("Nr of tries:\t%d\nHighscore:\t%d\nAverage Score:\t%d\n\n" % (times, highscore, (total/times)))
+    print("Nr of tries:\t%d\nHighscore:\t%d\nAverage Score:\t%d\n\n" % (times, highscore, (total / times)))

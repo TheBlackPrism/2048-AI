@@ -20,13 +20,13 @@ def find_best_move(board):
     """
     global p
     bestmove = -1
-    
+
     emptyTiles = countEmptyTiles(board)
     biggestTile = getHighestTile(board)
     start = time.time()
-    if emptyTiles > 8:
+    if emptyTiles > 6 or biggestTile < 1024:
         result = [score_toplevel_move(x, board, 1) for x in range(len(move_args))]
-    elif emptyTiles > 3 or biggestTile < 2048:       
+    elif emptyTiles > 1 or biggestTile < 2048:       
         result = []
         r = []  
         for x in range(len(move_args)):
@@ -69,6 +69,7 @@ def score_toplevel_move(move, board, depth=2):
 	#		calculate their scores dependence of the probability this will occur.
 	#		(recursively)
 	# 3.) When you reach the leaf calculate the board score with your heuristic.
+
     #print(str(depth) + " move: " + str(move))
     if depth == 0:
         return ai.get_boardscore(newboard)
@@ -91,7 +92,7 @@ def score_toplevel_move(move, board, depth=2):
 
             newboard[i,j] = 0
     if score == 0:  # no further moves
-        return ai.get_boardscore(newboard)
+        return 0 # return 0 as this move leads into game over
     else:
         cntEmptyFields = max(1,cntEmptyFields)
         return score / cntEmptyFields
