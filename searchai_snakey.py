@@ -14,6 +14,10 @@ import multiprocessing as mp
 UP, DOWN, LEFT, RIGHT = 0, 1, 2, 3
 move_args = [UP,DOWN,LEFT,RIGHT]
 
+#snakescore = np.array([[4,3,2,1],
+#                 [8,6,7,8],
+#                 [15,14,13,12],
+#                 [18,19,20,21]])**4
 snakescore = np.array([[4,3,2,1],
                   [5,6,7,8],
                   [12,11,10,9],
@@ -50,7 +54,10 @@ def find_best_move(board):
     """for m in move_args:
         print("move: %d score: %.4f" % (m, result[m]))
     print("Time needed = ", time.time() - start)"""
-
+    
+    if max(result) == 0: # Every move leads to game over --> finish game
+        bestmove = random.choice([UP,DOWN,LEFT,RIGHT])
+    
     return bestmove
 
 def countEmptyTiles(board):
