@@ -116,7 +116,7 @@ def score_toplevel_move(move, board, depth=2):
 def getScore(board):
     snakeSc = np.multiply(np.power(board,2),snakescore)
     emptySc = np.multiply((board==0).astype(np.int),emptytilescore)
-    return np.sum(np.add(snakeSc,emptySc);
+    return np.sum(np.add(snakeSc,emptySc))
 
 def execute_move(move, board):
     """
