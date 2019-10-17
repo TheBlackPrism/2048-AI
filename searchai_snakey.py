@@ -15,13 +15,17 @@ UP, DOWN, LEFT, RIGHT = 0, 1, 2, 3
 move_args = [UP,DOWN,LEFT,RIGHT]
 
 #snakescore = np.array([[4,3,2,1],
-#                 [8,6,7,8],
-#                 [15,14,13,12],
-#                 [18,19,20,21]])**4
+#                  [5,6,7,8],
+#                  [12,11,10,9],
+#                  [13,14,15,16]])**4
 snakescore = np.array([[4,3,2,1],
-                  [5,6,7,8],
-                  [12,11,10,9],
-                  [13,14,15,16]])**4
+                 [8,6,7,8],
+                 [14,14,13,12],
+                 [21,22,23,24]])**4
+emptytilescore = np.array([[4,4,4,4],
+                 [3,3,3,3],
+                 [0,0,0,0],
+                 [0,0,0,0]])*1000
 
 def find_best_move(board):
     """
@@ -110,7 +114,9 @@ def score_toplevel_move(move, board, depth=2):
         return score / cntEmptyFields
 
 def getScore(board):
-    return np.sum(np.multiply(board,snakescore));
+    snakeSc = np.multiply(np.power(board,2),snakescore)
+    emptySc = np.multiply((board==0).astype(np.int),emptytilescore)
+    return np.sum(np.add(snakeSc,emptySc);
 
 def execute_move(move, board):
     """

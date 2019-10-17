@@ -13,7 +13,7 @@
 import time
 
 #import heuristicai as ai #for task 4
-import searchai as ai #for task 5
+import searchai_snakey as ai #for task 5
 #import heuristicai_SOLUTION as ai #for task 4
                      #import searchai_SOLUTION as ai #for task 5
 def print_board(m):
