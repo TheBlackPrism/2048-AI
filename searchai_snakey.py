@@ -1,3 +1,4 @@
+import os
 import random
 import game
 import sys
@@ -22,6 +23,8 @@ snakescore = np.array([[4,3,2,1],
                   [5,6,7,8],
                   [12,11,10,9],
                   [13,14,15,16]])**4
+
+filename = os.path.basename(__file__)
 
 def find_best_move(board):
     """

@@ -1,3 +1,4 @@
+import os
 import random
 import game
 import sys
@@ -13,6 +14,8 @@ import multiprocessing as mp
 # Description: The logic to beat the game.  Based on expectimax algorithm.
 UP, DOWN, LEFT, RIGHT = 0, 1, 2, 3
 move_args = [UP,DOWN,LEFT,RIGHT]
+
+filename = os.path.basename(__file__)
 
 def find_best_move(board):
     """

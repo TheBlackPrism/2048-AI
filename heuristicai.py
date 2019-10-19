@@ -1,3 +1,4 @@
+import os
 import random
 import game
 import sys
@@ -7,6 +8,8 @@ import numpy as np
 # Date: 11.11.2016
 # Description: The logic of the AI to beat the game.
 UP, DOWN, LEFT, RIGHT = 0, 1, 2, 3
+
+filename = os.path.basename(__file__)
 
 def find_best_move(board):
     bestmove = -1 

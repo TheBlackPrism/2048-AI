@@ -120,6 +120,7 @@ if __name__ == '__main__':
     highscore = 0
     
     print("Starting Game...")
+    print("Filename: %s" % (ai.filename))
     print("************************")
 
     arglength = len(sys.argv)
