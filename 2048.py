@@ -124,7 +124,10 @@ if __name__ == '__main__':
     print("************************")
 
     arglength = len(sys.argv)
-    ai.main()
+    try:
+        ai.main()
+    except AttributeError:
+        pass # Method doesn't exist
 
     if arglength > 3:
         times = int(sys.argv[arglength - 1])
