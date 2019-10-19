@@ -15,10 +15,6 @@ import multiprocessing as mp
 UP, DOWN, LEFT, RIGHT = 0, 1, 2, 3
 move_args = [UP,DOWN,LEFT,RIGHT]
 
-#snakescore = np.array([[4,3,2,1],
-#                  [5,6,7,8],
-#                  [12,11,10,9],
-#                  [13,14,15,16]])**4
 diagscore = np.array([[1,2,3,5],
                        [2,3,5,8],
                        [3,5,8,12],
