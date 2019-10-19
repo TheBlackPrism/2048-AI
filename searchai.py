@@ -15,7 +15,7 @@ import multiprocessing as mp
 UP, DOWN, LEFT, RIGHT = 0, 1, 2, 3
 move_args = [UP,DOWN,LEFT,RIGHT]
 
-filename = os.path.basename(__file__)
+filename = os.path.basename(__file__) + "\nGet score function: " + ai.filename
 
 def find_best_move(board):
     """
