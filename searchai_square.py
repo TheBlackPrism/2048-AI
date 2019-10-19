@@ -15,10 +15,10 @@ import multiprocessing as mp
 UP, DOWN, LEFT, RIGHT = 0, 1, 2, 3
 move_args = [UP,DOWN,LEFT,RIGHT]
 
-diagscore = np.array([[1,2,3,5],
-                       [2,3,5,8],
-                       [3,5,8,12],
-                       [5,8,12,15]])**4
+diagscore = np.array([[1,1,1,1],
+                      [1,2,4,4],
+                      [1,4,8,8],
+                      [1,4,8,12]])**4
 
 filename = os.path.basename(__file__)
 
