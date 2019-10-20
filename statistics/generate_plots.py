@@ -1,6 +1,7 @@
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+from collections import Counter
 
 searchai_stats = [
     { "name": "heuristic", "csv": "searchai_heuristic.csv", "df": []},
@@ -26,13 +27,27 @@ def generatePlots(stats, title):
         data.append(stat['df']['score'].tolist())
         tickLabels.append(stat['name'])
 
+    # Boxplots
     fig1, ax1 = plt.subplots()
     ax1.set_title(title + " - Scores")
     ax1.set_ylabel('Score')
     ax1.boxplot(data)
-
     plt.xticks(range(1,len(tickLabels)+1), tickLabels)
     plt.show()
+
+    # Barcharts
+    for stat in stats:
+        df = stat['df'].sort_values(by=['highest tile'])
+        labels = list(map(str, Counter(df['highest tile'].tolist()).keys()))
+        values = Counter(df['highest tile'].tolist()).values()
+        plt.subplot()
+        plt.bar(labels, values, 0.3)
+        plt.title(stat['name'] + ' - tile occurences')
+        plt.ylabel('occurence')
+        plt.xlabel('tile')
+        plt.show()
+
+    # sonstrige Stats
 
 
 if __name__ == '__main__':
