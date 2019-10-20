@@ -6,7 +6,7 @@ from collections import Counter
 searchai_stats = [
     { "name": "Heuristic", "csv": "searchai_heuristic.csv", "df": []},
     { "name": "Snakey", "csv": "searchai_snakey.csv", "df": []},
-    #{ "name": "snakey +", "csv": "searchai_snakey_plus.csv" , "df": []},
+    { "name": "Snakey +", "csv": "searchai_snakey_plus.csv" , "df": []},
     { "name": "Diagonal", "csv": "searchai_diagonal.csv", "df": []},
     { "name": "Square", "csv": "searchai_square.csv", "df": []}
 ]
