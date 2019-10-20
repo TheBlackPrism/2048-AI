@@ -102,17 +102,9 @@ def get_edge_distance_bonus(x, y, board):
 
 def get_neighbour_bonus(x, y, board):
     bonus = 1
-
     if y > 0 and board[y - 1, x] == board[y, x]:
-        bonus *= 4
-    elif y > 0 and board[y - 1, x] == board[y, x] / 2:
-        bonus *= 3
-
+        bonus *= 2
     if x > 0 and board[y, x - 1] == board[y, x]:
-        bonus *= 2
-    elif x > 0 and (y - 1) % 2 and board[y, x - 1] == board[y, x] / 2:
-        bonus *= 2
-    elif x < 3 and  y % 2 and board[y, x + 1] == board[y, x]/2:
         bonus *= 2
 
     return bonus
