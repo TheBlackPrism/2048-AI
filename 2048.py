@@ -66,7 +66,7 @@ def play_game(gamectrl):
     board = gamectrl.get_board()
     maxval = max(max(row) for row in to_val(board))
     print("Game over. Final score %d; highest tile %d." % (score, maxval))
-    print("Number of Moves %d; Time per Move %fs" % (moveno, (time.time() - start) / moveno))
+    print("Number of Moves %d; Time per Move %f" % (moveno, (time.time() - start) / moveno))
     print("The board: ")
     print(board)
 

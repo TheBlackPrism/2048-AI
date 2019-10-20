@@ -47,7 +47,7 @@ def find_best_move(board):
     bestmove = result.index(max(result))
     """for m in move_args:
         print("move: %d score: %.4f" % (m, result[m]))
-    print("Time needed = ", time.time() - start, "s")"""
+    print("Time needed = ", time.time() - start)"""
     
     if max(result) == 0: # Every move leads to game over --> finish game
         bestmove = random.choice([UP,DOWN,LEFT,RIGHT])
