@@ -79,7 +79,7 @@ def generatePlots(stats, title):
                 '8192': 0,}
 
         for i in range(len(labels)):
-            tile_occurences[str(labels[i])] = values[i]
+            tile_occurences[str(labels[i])] = values[i]/sum(values)*100
 
         print(tile_occurences)
 
@@ -87,7 +87,8 @@ def generatePlots(stats, title):
         plt.bar(tile_occurences.keys(), tile_occurences.values(), 0.3)
         plt.title(title + ' ' + stat['name'] + ' - Highest tile reached')
         plt.xlabel('tile')
-        plt.ylim([0,15])
+        plt.ylabel('percent (%)')
+        plt.ylim([0,100])
         plt.show()
 
     # sonstige Stats
