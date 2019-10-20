@@ -46,7 +46,13 @@ def generatePlots(stats, title):
         plt.xlabel('tile')
         plt.show()
 
-    # sonstrige Stats
+    # sonstige Stats
+    for stat in stats:
+        print(stat['name'])
+        print("Highscore: " + str(max(stat['df']['score'])))
+        print("Highest tile reached: " + str(max(stat['df']['highest tile'])))
+        print("Average Time per move: " + str(stat['df']['time per move'].mean()))
+        print()
 
 
 if __name__ == '__main__':
