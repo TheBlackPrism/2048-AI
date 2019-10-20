@@ -24,9 +24,9 @@ def find_best_move(board):
     emptyTiles = countEmptyTiles(board)
     biggestTile = getHighestTile(board)
     start = time.time()
-    if emptyTiles > 6 or biggestTile < 1024:
+    if emptyTiles > 6:
         result = [score_toplevel_move(x, board, 1) for x in range(len(move_args))]
-    elif emptyTiles > 1 or biggestTile < 2048:       
+    elif emptyTiles > 1 or biggestTile < 1000:
         result = []
         r = []  
         for x in range(len(move_args)):
