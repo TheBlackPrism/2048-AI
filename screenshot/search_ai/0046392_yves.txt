@@ -1,0 +1,115 @@
+(base) PS D:\Projects\2048-AI> python .\2048.py -b chrome 15
+Starting Game...
+Filename: searchai.py
+Get score function: heuristicai_yves.py
+************************
+Game over. Final score 36144; highest tile 2048.
+Number of Moves 552; Time per Move 0.192706
+The board:
+[[   8    4    2    4]
+ [ 256   32   64   16]
+ [   8  512  128    4]
+ [   2 1024    2 2048]]
+Game over. Final score 46392; highest tile 4096.
+Number of Moves 2058; Time per Move 0.131536
+The board:
+[[   4    2    4    2]
+ [   8   64   16    8]
+ [   2   32  128   16]
+ [ 128    4    8 4096]]
+Game over. Final score 23488; highest tile 2048.
+Number of Moves 1211; Time per Move 0.101484
+The board:
+[[   4    8    4    2]
+ [   8   32  256   16]
+ [  16   64    8   64]
+ [   4  128    4 2048]]
+Game over. Final score 28956; highest tile 2048.
+Number of Moves 1521; Time per Move 0.109465
+The board:
+[[   2    4    8   16]
+ [  16   64   32  128]
+ [ 256  512  256 2048]
+ [   4    8   32    2]]
+Game over. Final score 16436; highest tile 1024.
+Number of Moves 987; Time per Move 0.065313
+The board:
+[[   4    2    8    4]
+ [  16   32   16   64]
+ [  64  128  512 1024]
+ [   4    8  256    2]]
+Game over. Final score 36532; highest tile 2048.
+Number of Moves 1912; Time per Move 0.125647
+The board:
+[[   4   64    2    8]
+ [  16  128   32   16]
+ [   4  512  256   64]
+ [   2    4 1024 2048]]
+Game over. Final score 16464; highest tile 1024.
+Number of Moves 977; Time per Move 0.085643
+The board:
+[[  16   32    4    2]
+ [   4    2  512   16]
+ [  64   32  128   64]
+ [   2  256    2 1024]]
+Game over. Final score 32144; highest tile 2048.
+Number of Moves 1627; Time per Move 0.115982
+The board:
+[[   2    8    2    8]
+ [   4  256   32   64]
+ [  16  128 1024   16]
+ [   2    4   16 2048]]
+Game over. Final score 27540; highest tile 2048.
+Number of Moves 1444; Time per Move 0.082926
+The board:
+[[  64   16    2    4]
+ [  32  128  512    2]
+ [  64  256   32    8]
+ [   2    4    8 2048]]
+Game over. Final score 16920; highest tile 1024.
+Number of Moves 1013; Time per Move 0.082459
+The board:
+[[   4    2    8    2]
+ [   2    8    4   16]
+ [  32   64  128   32]
+ [ 128  512  256 1024]]
+Game over. Final score 36228; highest tile 2048.
+Number of Moves 1871; Time per Move 0.127520
+The board:
+[[   2    4    8    2]
+ [   8  512   64   16]
+ [  32  128  256   32]
+ [   4    8 1024 2048]]
+Game over. Final score 5712; highest tile 512.
+Number of Moves 401; Time per Move 0.019934
+The board:
+[[ 16   2   4   8]
+ [ 32  64  16   4]
+ [  4 128   2  32]
+ [  2  64   4 512]]
+Game over. Final score 36416; highest tile 2048.
+Number of Moves 1887; Time per Move 0.120255
+The board:
+[[   8   32    4    2]
+ [  16  256    8   64]
+ [ 128   64 1024 2048]
+ [   4  512    4    2]]
+Game over. Final score 32572; highest tile 2048.
+Number of Moves 1678; Time per Move 0.121955
+The board:
+[[   2    4    8    2]
+ [   8   32  128  256]
+ [  64 1024   32    2]
+ [   4   16   64 2048]]
+Game over. Final score 30568; highest tile 2048.
+Number of Moves 1537; Time per Move 0.108844
+The board:
+[[   2    4    2    4]
+ [   8   16   32   16]
+ [   4 1024  128   64]
+ [   8   32   16 2048]]
+************************
+
+Nr of tries:    15
+Highscore:      46392
+Average Score:  28167

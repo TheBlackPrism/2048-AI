@@ -4,7 +4,7 @@ import game
 import sys
 import numpy as np
 
-import heuristicai as ai
+#import heuristicai as ai
 import time
 import multiprocessing as mp
 
@@ -15,7 +15,12 @@ import multiprocessing as mp
 UP, DOWN, LEFT, RIGHT = 0, 1, 2, 3
 move_args = [UP,DOWN,LEFT,RIGHT]
 
-filename = os.path.basename(__file__) + "\nGet score function: " + ai.filename
+diagscore = np.array([[1,1,1,1],
+                      [1,2,4,4],
+                      [1,4,8,8],
+                      [1,4,8,12]])**4
+
+filename = os.path.basename(__file__)
 
 def find_best_move(board):
     """
@@ -27,9 +32,9 @@ def find_best_move(board):
     emptyTiles = countEmptyTiles(board)
     biggestTile = getHighestTile(board)
     start = time.time()
-    if emptyTiles > 6:
+    if emptyTiles > 8 or biggestTile < 1024:
         result = [score_toplevel_move(x, board, 1) for x in range(len(move_args))]
-    elif emptyTiles > 1 or biggestTile < 1000:
+    elif emptyTiles > 4 or biggestTile < 2048:
         result = []
         r = []  
         for x in range(len(move_args)):
@@ -48,10 +53,7 @@ def find_best_move(board):
     """for m in move_args:
         print("move: %d score: %.4f" % (m, result[m]))
     print("Time needed = ", time.time() - start)"""
-    
-    if max(result) == 0: # Every move leads to game over --> finish game
-        bestmove = random.choice([UP,DOWN,LEFT,RIGHT])
-    
+
     return bestmove
 
 def countEmptyTiles(board):
@@ -78,7 +80,7 @@ def score_toplevel_move(move, board, depth=2):
 
     #print(str(depth) + " move: " + str(move))
     if depth == 0:
-        return ai.get_boardscore(newboard)
+        return getScore(newboard)
     
     score = 0
     depth -= 1
@@ -102,7 +104,10 @@ def score_toplevel_move(move, board, depth=2):
     else:
         cntEmptyFields = max(1,cntEmptyFields)
         return score / cntEmptyFields
-    
+
+def getScore(board):
+    return np.sum(np.multiply(board,diagscore));
+
 def execute_move(move, board):
     """
     move and return the grid without a new random tile 
@@ -121,7 +126,7 @@ def execute_move(move, board):
         return game.merge_right(board)
     else:
         sys.exit("No valid move")
-        
+
 def board_equals(board, newboard):
     """
     Check if two boards are equal

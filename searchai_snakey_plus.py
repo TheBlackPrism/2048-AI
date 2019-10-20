@@ -4,7 +4,7 @@ import game
 import sys
 import numpy as np
 
-import heuristicai as ai
+#import heuristicai as ai
 import time
 import multiprocessing as mp
 
@@ -15,7 +15,16 @@ import multiprocessing as mp
 UP, DOWN, LEFT, RIGHT = 0, 1, 2, 3
 move_args = [UP,DOWN,LEFT,RIGHT]
 
-filename = os.path.basename(__file__) + "\nGet score function: " + ai.filename
+#snakescore = np.array([[4,3,2,1],
+#                 [8,6,7,8],
+#                 [15,14,13,12],
+#                 [18,19,20,21]])**4
+snakescore = np.array([[4,3,2,1],
+                  [5,6,7,8],
+                  [12,11,10,9],
+                  [13,14,15,16]])**4
+
+filename = os.path.basename(__file__)
 
 def find_best_move(board):
     """
@@ -27,9 +36,9 @@ def find_best_move(board):
     emptyTiles = countEmptyTiles(board)
     biggestTile = getHighestTile(board)
     start = time.time()
-    if emptyTiles > 6:
+    if emptyTiles > 8 or biggestTile < 1024:
         result = [score_toplevel_move(x, board, 1) for x in range(len(move_args))]
-    elif emptyTiles > 1 or biggestTile < 1000:
+    elif emptyTiles > 4 or biggestTile < 2048:
         result = []
         r = []  
         for x in range(len(move_args)):
@@ -78,7 +87,7 @@ def score_toplevel_move(move, board, depth=2):
 
     #print(str(depth) + " move: " + str(move))
     if depth == 0:
-        return ai.get_boardscore(newboard)
+        return getScore(newboard)
     
     score = 0
     depth -= 1
@@ -102,7 +111,17 @@ def score_toplevel_move(move, board, depth=2):
     else:
         cntEmptyFields = max(1,cntEmptyFields)
         return score / cntEmptyFields
-    
+
+def getScore(board):
+    score = np.array([[0]*4]*4)
+    for i in range(0,4):
+        for j in range(0,4):
+            if j > 0 and board[i,j] == board[i,j-1]:
+                score[i,j] += board[i, j] * board[i, j] * (i+1) *(j+1)
+            if i > 0 and board[i, j] == board[i - 1, j]:
+                score[i,j] += board[i, j] * board[i, j] * (i+1) *(j+1)
+    return np.sum(np.multiply(np.multiply(board,snakescore),score));
+
 def execute_move(move, board):
     """
     move and return the grid without a new random tile 
@@ -121,7 +140,7 @@ def execute_move(move, board):
         return game.merge_right(board)
     else:
         sys.exit("No valid move")
-        
+
 def board_equals(board, newboard):
     """
     Check if two boards are equal

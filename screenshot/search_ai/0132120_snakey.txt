@@ -1,0 +1,77 @@
+Starting Game...
+************************ snakey_orig
+Game over. Final score 72628; highest tile 4096.
+Number of Moves 3371; Time per Move 0.749544
+The board:
+[[   4   32    4    2]
+ [  32   64  128    4]
+ [ 128  256 2048   64]
+ [ 512   16    8 4096]]
+Game over. Final score 80456; highest tile 4096.
+Number of Moves 3730; Time per Move 0.844781
+The board:
+[[   8    4    2    4]
+ [ 512   16   32   64]
+ [   4  256  128    4]
+ [   2 1024 2048 4096]]
+Game over. Final score 75824; highest tile 4096.
+Number of Moves 3462; Time per Move 0.781493
+The board:
+[[   2    4    2    4]
+ [   8   16   32   16]
+ [  64  128   64   32]
+ [ 128 1024 2048 4096]]
+Game over. Final score 72560; highest tile 4096.
+Number of Moves 3365; Time per Move 0.761130
+The board:
+[[   2    4    8    2]
+ [   8   16   32   64]
+ [  64  256  128   16]
+ [ 128  512 2048 4096]]
+Game over. Final score 69788; highest tile 4096.
+Number of Moves 3154; Time per Move 0.740023
+The board:
+[[   4    2   32    8]
+ [   8   64  128    2]
+ [ 512   16   32   16]
+ [   4 2048    2 4096]]
+Game over. Final score 132120; highest tile 8192.
+Number of Moves 5509; Time per Move 0.933802
+The board:
+[[   4    8    4    2]
+ [   2   64  512   16]
+ [   4  256   32    8]
+ [   8 1024 2048 8192]]
+Game over. Final score 71500; highest tile 4096.
+Number of Moves 3265; Time per Move 0.780098
+The board:
+[[   2   32    4    2]
+ [   8  128   64   32]
+ [ 256  512    8   16]
+ [   4    8 2048 4096]]
+Game over. Final score 33088; highest tile 2048.
+Number of Moves 1721; Time per Move 0.460991
+The board:
+[[   2    4    8    2]
+ [   8   16   32   16]
+ [  64  256  128   32]
+ [ 128    8 1024 2048]]
+Game over. Final score 80560; highest tile 4096.
+Number of Moves 3738; Time per Move 0.898002
+The board:
+[[   2    4    2    4]
+ [   8   32   16    8]
+ [ 256  128   64   32]
+ [ 512 1024 2048 4096]]
+Game over. Final score 16828; highest tile 1024.
+Number of Moves 1003; Time per Move 0.063521
+The board:
+[[   2    4    2    4]
+ [   4   16   64    8]
+ [  32  256  128   16]
+ [ 128    4  512 1024]]
+************************
+
+Nr of tries:    10
+Highscore:      132120
+Average Score:  70535

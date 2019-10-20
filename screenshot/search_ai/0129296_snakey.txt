@@ -1,0 +1,78 @@
+(base) PS D:\Projects\2048-AI> python .\2048.py -b chrome 10
+Starting Game...
+************************ snakey_orig
+Game over. Final score 51852; highest tile 4096.
+Number of Moves 2402; Time per Move 0.587641
+The board:
+[[   8    2    4    8]
+ [  64   32   16    2]
+ [   2  128   64   32]
+ [   4  256  512 4096]]
+Game over. Final score 60840; highest tile 4096.
+Number of Moves 2851; Time per Move 0.610373
+The board:
+[[   2    4    8    2]
+ [   8   16   32   16]
+ [  64  256   64   32]
+ [ 128  512 1024 4096]]
+Game over. Final score 61404; highest tile 4096.
+Number of Moves 2885; Time per Move 0.610830
+The board:
+[[   2    8    4    2]
+ [  16   64   32    8]
+ [ 128  256  128   64]
+ [   4  512 1024 4096]]
+Game over. Final score 113036; highest tile 8192.
+Number of Moves 4685; Time per Move 0.819058
+The board:
+[[   2    4    8    2]
+ [   8   16   32   16]
+ [ 256  128   64   32]
+ [   4  512 1024 8192]]
+Game over. Final score 32108; highest tile 2048.
+Number of Moves 1628; Time per Move 0.386732
+The board:
+[[   2    4   16    4]
+ [   4    8   64    2]
+ [ 256  128   32    4]
+ [   4    8 1024 2048]]
+Game over. Final score 78748; highest tile 4096.
+Number of Moves 3618; Time per Move 0.738084
+The board:
+[[  16    8    4    2]
+ [4096   32  128   64]
+ [   4  512   16    2]
+ [   2    8 1024 2048]]
+Game over. Final score 80464; highest tile 4096.
+Number of Moves 3731; Time per Move 0.732848
+The board:
+[[   2    8    4    2]
+ [  16   64  128    8]
+ [ 512  256   32    2]
+ [   2 1024 2048 4096]]
+Game over. Final score 36052; highest tile 2048.
+Number of Moves 1850; Time per Move 0.467499
+The board:
+[[   2    4   32    4]
+ [   8   64 1024    2]
+ [ 256  128    8    4]
+ [   4  512    4 2048]]
+Game over. Final score 129296; highest tile 8192.
+Number of Moves 5391; Time per Move 0.811532
+The board:
+[[   2    4    2    4]
+ [   8   16   64   16]
+ [ 256  128   32   64]
+ [   4 1024 2048 8192]]
+Game over. Final score 71376; highest tile 4096.
+Number of Moves 3231; Time per Move 0.695000
+The board:
+[[   4    2    8    2]
+ [   2   16   32   16]
+ [ 256  128   64   32]
+ [   4  512 2048 4096]]
+************************
+
+Nr of tries:    10
+Highscore:      129296
+Average Score:  71517

@@ -67,6 +67,8 @@ def play_game(gamectrl):
     maxval = max(max(row) for row in to_val(board))
     print("Game over. Final score %d; highest tile %d." % (score, maxval))
     print("Number of Moves %d; Time per Move %f" % (moveno, (time.time() - start) / moveno))
+    print("The board: ")
+    print(board)
 
 def parse_args(argv):
     import argparse
@@ -92,15 +94,18 @@ def main(argv):
             args.port = 9222
         ctrl = ChromeDebuggerControl(args.port)
 
-    if args.ctrlmode == 'keyboard':
-        from gamectrl import Keyboard2048Control
-        gamectrl = Keyboard2048Control(ctrl)
-    elif args.ctrlmode == 'fast':
-        from gamectrl import Fast2048Control
-        gamectrl = Fast2048Control(ctrl)
-    elif args.ctrlmode == 'hybrid':
-        from gamectrl import Hybrid2048Control
-        gamectrl = Hybrid2048Control(ctrl)
+    # if args.ctrlmode == 'keyboard':
+    #     from gamectrl import Keyboard2048Control
+    #     gamectrl = Keyboard2048Control(ctrl)
+    # elif args.ctrlmode == 'fast':
+    #     from gamectrl import Fast2048Control
+    #     gamectrl = Fast2048Control(ctrl)
+    # elif args.ctrlmode == 'hybrid':
+    #     from gamectrl import Hybrid2048Control
+    #     gamectrl = Hybrid2048Control(ctrl)
+
+    from gamectrl import Fast2048Control
+    gamectrl = Fast2048Control(ctrl)
 
     if gamectrl.get_status() == 'ended':
         gamectrl.restart_game()
@@ -115,10 +120,14 @@ if __name__ == '__main__':
     highscore = 0
     
     print("Starting Game...")
+    print("Filename: %s" % (ai.filename))
     print("************************")
 
     arglength = len(sys.argv)
-    ai.main()
+    try:
+        ai.main()
+    except AttributeError:
+        pass # Method doesn't exist
 
     if arglength > 3:
         times = int(sys.argv[arglength - 1])
