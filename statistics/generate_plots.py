@@ -4,11 +4,11 @@ import matplotlib.pyplot as plt
 from collections import Counter
 
 searchai_stats = [
-    { "name": "heuristic", "csv": "searchai_heuristic.csv", "df": []},
-    { "name": "snakey", "csv": "searchai_snakey.csv", "df": []},
+    { "name": "Heuristic", "csv": "searchai_heuristic.csv", "df": []},
+    { "name": "Snakey", "csv": "searchai_snakey.csv", "df": []},
     #{ "name": "snakey +", "csv": "searchai_snakey_plus.csv" , "df": []},
-    { "name": "diagonal", "csv": "searchai_diagonal.csv", "df": []},
-    { "name": "square", "csv": "searchai_square.csv", "df": []}
+    { "name": "Diagonal", "csv": "searchai_diagonal.csv", "df": []},
+    { "name": "Square", "csv": "searchai_square.csv", "df": []}
 ]
 
 heuristicai_stats = [
@@ -42,8 +42,7 @@ def generatePlots(stats, title):
         values = Counter(df['highest tile'].tolist()).values()
         plt.subplot()
         plt.bar(labels, values, 0.3)
-        plt.title(stat['name'] + ' - tile occurences')
-        plt.ylabel('occurence')
+        plt.title(title + ' ' + stat['name'] + ' - Highest tile reached')
         plt.xlabel('tile')
         plt.show()
 
