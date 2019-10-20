@@ -1,0 +1,59 @@
+(base) PS C:\Projects\KI1-P\2048-AI> python .\2048.py -b chrome 7
+Starting Game...
+Filename: searchai.py
+Get score function: heuristicai.py
+************************
+Game over. Final score 68672; highest tile 4096.
+Number of Moves 3156; Time per Move 0.208033
+The board:
+[[   2    4   32    2]
+ [  32   64  128   64]
+ [ 128  256 2048 4096]
+ [   4    2    8    2]]
+Game over. Final score 16476; highest tile 1024.
+Number of Moves 977; Time per Move 0.095524
+The board:
+[[   2    8    4    2]
+ [  16   32   16    8]
+ [  64  128   64   32]
+ [   4  256  512 1024]]
+Game over. Final score 16536; highest tile 1024.
+Number of Moves 977; Time per Move 0.047004
+The board:
+[[   8    4    8    2]
+ [ 512  128   16 1024]
+ [  16    8   32    4]
+ [   4  128  256    2]]
+Game over. Final score 33976; highest tile 2048.
+Number of Moves 1764; Time per Move 0.175911
+The board:
+[[   8   16    4    2]
+ [ 256  128   64   16]
+ [   4   16  256   32]
+ [   2    8 1024 2048]]
+Game over. Final score 34340; highest tile 2048.
+Number of Moves 1734; Time per Move 0.153927
+The board:
+[[  32    2   16    4]
+ [   8  128   64   16]
+ [   4  512    4    2]
+ [   2 1024    2 2048]]
+Game over. Final score 25140; highest tile 2048.
+Number of Moves 1321; Time per Move 0.126168
+The board:
+[[   2    8    2    4]
+ [  32   16   32   16]
+ [ 256  128   64   32]
+ [   2    4  256 2048]]
+Game over. Final score 57548; highest tile 4096.
+Number of Moves 2685; Time per Move 0.168874
+The board:
+[[   2    4    2    8]
+ [  64   16   32   16]
+ [ 128  256  128   64]
+ [   2    8 1024 4096]]
+************************
+
+Nr of tries:    7
+Highscore:      68672
+Average Score:  36098
