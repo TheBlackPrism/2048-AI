@@ -23,12 +23,14 @@ def generatePlots(stats, title):
     data_scores=[]
     data_tiles=[]
     data_time=[]
+    data_moves=[]
     tickLabels = []
     for stat in stats:
         stat['df'] = pd.read_csv(stat["csv"], sep=';')
         data_scores.append(stat['df']['score'].tolist())
         data_tiles.append(stat['df']['highest tile'].tolist())
         data_time.append(stat['df']['time per move'].tolist())
+        data_moves.append(stat['df']['number of moves'].tolist())
         tickLabels.append(stat['name'])
 
     # Boxplots - Scores
@@ -55,15 +57,37 @@ def generatePlots(stats, title):
     plt.xticks(range(1,len(tickLabels)+1), tickLabels)
     plt.show()
 
+    # Boxplots - Moves
+    fig1, ax1 = plt.subplots()
+    ax1.set_title(title + " - Number of Moves")
+    ax1.set_ylabel('Tile')
+    ax1.boxplot(data_moves)
+    plt.xticks(range(1,len(tickLabels)+1), tickLabels)
+    plt.show()
+
     # Barcharts
     for stat in stats:
         df = stat['df'].sort_values(by=['highest tile'])
         labels = list(map(str, Counter(df['highest tile'].tolist()).keys()))
-        values = Counter(df['highest tile'].tolist()).values()
+        values = list(Counter(df['highest tile'].tolist()).values())
+
+        tile_occurences = {'256': 0,
+                '512': 0,
+                '1024': 0,
+                '2048': 0,
+                '4096': 0,
+                '8192': 0,}
+
+        for i in range(len(labels)):
+            tile_occurences[str(labels[i])] = values[i]
+
+        print(tile_occurences)
+
         plt.subplot()
-        plt.bar(labels, values, 0.3)
+        plt.bar(tile_occurences.keys(), tile_occurences.values(), 0.3)
         plt.title(title + ' ' + stat['name'] + ' - Highest tile reached')
         plt.xlabel('tile')
+        plt.ylim([0,15])
         plt.show()
 
     # sonstige Stats
