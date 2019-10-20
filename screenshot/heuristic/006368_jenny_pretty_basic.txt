@@ -1,0 +1,148 @@
+Starting Game...
+Filename: heuristicai_jenny1_pretty_basic.py
+************************
+Game over. Final score 2232; highest tile 256.
+Number of Moves 209; Time per Move 0.002457
+The board:
+[[  2   4   2  16]
+ [  4   8  16   2]
+ [  8  16  32  16]
+ [ 16  32   2 256]]
+Game over. Final score 3168; highest tile 256.
+Number of Moves 298; Time per Move 0.002507
+The board:
+[[  4   8   4   2]
+ [  8   4  16  32]
+ [  2   8  32  64]
+ [ 16 128 256   2]]
+Game over. Final score 2840; highest tile 256.
+Number of Moves 258; Time per Move 0.002505
+The board:
+[[  4   2   8   2]
+ [  2   4   2  32]
+ [  8 128  16   2]
+ [ 16  32   2 256]]
+Game over. Final score 6368; highest tile 512.
+Number of Moves 483; Time per Move 0.002405
+The board:
+[[  4   2   4   2]
+ [  2   4   8  32]
+ [  4   8  64   2]
+ [  8  32 256 512]]
+Game over. Final score 704; highest tile 64.
+Number of Moves 102; Time per Move 0.002556
+The board:
+[[ 4  2  8  2]
+ [ 2  4 16  4]
+ [ 4  8 32 16]
+ [16 32  2 64]]
+Game over. Final score 3000; highest tile 256.
+Number of Moves 268; Time per Move 0.002523
+The board:
+[[  2   8   2   4]
+ [  4   2  16  32]
+ [  8  16  32   2]
+ [ 16  32 128 256]]
+Game over. Final score 4728; highest tile 512.
+Number of Moves 378; Time per Move 0.002398
+The board:
+[[  2   4   8   2]
+ [  4   8  16  32]
+ [  8  64  32   2]
+ [ 16   4   8 512]]
+Game over. Final score 1448; highest tile 128.
+Number of Moves 166; Time per Move 0.002497
+The board:
+[[  4   2   4   2]
+ [  2   4  32  16]
+ [  4   8  16   8]
+ [  8  32  64 128]]
+Game over. Final score 5460; highest tile 512.
+Number of Moves 419; Time per Move 0.002561
+The board:
+[[  2   4   8   2]
+ [  4   8  16  32]
+ [  8  16  32   8]
+ [ 16  64 128 512]]
+Game over. Final score 3928; highest tile 256.
+Number of Moves 359; Time per Move 0.002427
+The board:
+[[  2  32   4   2]
+ [  4   8  32 128]
+ [  8  32 128   4]
+ [  2  64   2 256]]
+Game over. Final score 3388; highest tile 256.
+Number of Moves 316; Time per Move 0.002456
+The board:
+[[  8   2   8   4]
+ [  4   8   4  64]
+ [  8  32  64  16]
+ [  2  16 128 256]]
+Game over. Final score 3264; highest tile 256.
+Number of Moves 320; Time per Move 0.002410
+The board:
+[[  2   8   4   2]
+ [  4  16  32  16]
+ [ 16  64  16   4]
+ [  4  32 128 256]]
+Game over. Final score 4536; highest tile 512.
+Number of Moves 356; Time per Move 0.002518
+The board:
+[[  2   4  16   4]
+ [  8  32   8   2]
+ [  4   2  16  32]
+ [ 16  32   2 512]]
+Game over. Final score 1148; highest tile 64.
+Number of Moves 143; Time per Move 0.002543
+The board:
+[[ 4  2  4  8]
+ [ 2  8 32 64]
+ [ 8 16 64  2]
+ [ 2  4  8 64]]
+Game over. Final score 1732; highest tile 128.
+Number of Moves 196; Time per Move 0.002350
+The board:
+[[  4   8   4   2]
+ [  2  16   8   4]
+ [  4   8  32  64]
+ [  8  32  64 128]]
+Game over. Final score 2944; highest tile 256.
+Number of Moves 280; Time per Move 0.002551
+The board:
+[[  2   4   8   4]
+ [  4   8  16   8]
+ [  8  16  32  16]
+ [ 32   2 128 256]]
+Game over. Final score 3212; highest tile 256.
+Number of Moves 302; Time per Move 0.002537
+The board:
+[[  2   4   8   4]
+ [  4  16  64  16]
+ [  2  32 128  32]
+ [  4  16   8 256]]
+Game over. Final score 2816; highest tile 256.
+Number of Moves 276; Time per Move 0.002335
+The board:
+[[  2   4   8   4]
+ [  4   8  16   8]
+ [  8  16  32  64]
+ [ 16  32  64 256]]
+Game over. Final score 1700; highest tile 128.
+Number of Moves 204; Time per Move 0.002448
+The board:
+[[  2   4   8   2]
+ [  4  32  64   8]
+ [ 64   2   8 128]
+ [  2   8  32   8]]
+Game over. Final score 1500; highest tile 128.
+Number of Moves 182; Time per Move 0.002324
+The board:
+[[  4   2   8   4]
+ [  2  16  32   8]
+ [  4  32  16  64]
+ [  2  16   4 128]]
+************************
+
+Nr of tries:    20
+Highscore:      6368
+Average Score:  3005
