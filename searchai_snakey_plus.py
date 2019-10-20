@@ -113,14 +113,14 @@ def score_toplevel_move(move, board, depth=2):
         return score / cntEmptyFields
 
 def getScore(board):
-    score = 0
+    score = np.array([[0]*4]*4)
     for i in range(0,4):
         for j in range(0,4):
             if j > 0 and board[i,j] == board[i,j-1]:
-                score += board[i, j] * (i+1) *(j+1)
+                score[i,j] += board[i, j] * board[i, j] * (i+1) *(j+1)
             if i > 0 and board[i, j] == board[i - 1, j]:
-                score += board[i, j] * (i+1) *(j+1)
-    return score * 1000 + np.sum(np.multiply(board,snakescore));
+                score[i,j] += board[i, j] * board[i, j] * (i+1) *(j+1)
+    return np.sum(np.multiply(np.multiply(board,snakescore),score));
 
 def execute_move(move, board):
     """
