@@ -20,18 +20,28 @@ def main():
     #generatePlots(heuristicai_stats)
 
 def generatePlots(stats, title):
-    data=[]
+    data_scores=[]
+    data_tiles=[]
     tickLabels = []
     for stat in stats:
         stat['df'] = pd.read_csv(stat["csv"], sep=';')
-        data.append(stat['df']['score'].tolist())
+        data_scores.append(stat['df']['score'].tolist())
+        data_tiles.append(stat['df']['highest tile'].tolist())
         tickLabels.append(stat['name'])
 
-    # Boxplots
+    # Boxplots - Scores
     fig1, ax1 = plt.subplots()
     ax1.set_title(title + " - Scores")
     ax1.set_ylabel('Score')
-    ax1.boxplot(data)
+    ax1.boxplot(data_scores)
+    plt.xticks(range(1,len(tickLabels)+1), tickLabels)
+    plt.show()
+
+    # Boxplots - Tiles
+    fig1, ax1 = plt.subplots()
+    ax1.set_title(title + " - Highest Tile")
+    ax1.set_ylabel('Tile')
+    ax1.boxplot(data_tiles)
     plt.xticks(range(1,len(tickLabels)+1), tickLabels)
     plt.show()
 
