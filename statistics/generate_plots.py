@@ -86,7 +86,8 @@ def generatePlots(stats, title, isHigh):
                 '256': 0,
                 '512': 0,
                 '1024': 0,
-                '2048': 0}
+                '2048': 0,
+                '4096': 0}
 
     x = 0.0
     idx = 0
