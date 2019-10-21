@@ -15,7 +15,7 @@ heuristicai_stats = [{ "name": "Random Agent", "csv": "heuristicai_0_random_agen
     #{ "name": "Check Score", "csv": "heuristicai_jenny3_check_score.csv", "df": []},
     #{ "name": "Check Score 2", "csv": "heuristicai_jenny4_check_score_altered_weights.csv", "df": []},
     { "name": "Check Score", "csv": "heuristicai_jenny5_check_score_minimize_up.csv", "df": []},
-    { "name": "Hirarchial Rating", "csv": "heuristicai_yves.csv", "df": []}]
+    { "name": "Hierarchical Rating", "csv": "heuristicai_yves.csv", "df": []}]
 
 def main():
     generatePlots(searchai_stats, "Search AI", True)
