@@ -37,14 +37,14 @@ def find_best_move(board):
     start = time.time()
 
     if multiprocess:
-        result = [score_toplevel_move(x, board, depth) for x in range(len(move_args))]
-    else :
         result = []
         r = []  
         for x in range(len(move_args)):
             r.append(p.apply_async(score_toplevel_move, (x, board, 2)))
         for i in range(len(r)):
             result.append(r[i].get())
+    else :
+        result = [score_toplevel_move(x, board, depth) for x in range(len(move_args))]
     
 
     """if emptyTiles > 8 or biggestTile < 1024:
@@ -68,6 +68,8 @@ def find_best_move(board):
     for m in move_args:
         print("move: %d score: %.4f" % (m, result[m]))
     print("Time needed = ", time.time() - start)
+    print(depth)
+    print(multiprocess)
     
     if max(result) == 0: # Every move leads to game over --> finish game
         bestmove = random.choice([UP,DOWN,LEFT,RIGHT])
