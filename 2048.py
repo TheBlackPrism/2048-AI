@@ -12,8 +12,8 @@
 #from __future__ import print_function
 import time
 
-#import heuristicai as ai #for task 4
-import searchai as ai #for task 5
+import heuristicai_yves as ai #for task 4
+#import searchai as ai #for task 5
 #import heuristicai_SOLUTION as ai #for task 4
                      #import searchai_SOLUTION as ai #for task 5
 def print_board(m):
@@ -65,10 +65,12 @@ def play_game(gamectrl):
     score = gamectrl.get_score()
     board = gamectrl.get_board()
     maxval = max(max(row) for row in to_val(board))
+    timepermove = (time.time() - start) / moveno
     print("Game over. Final score %d; highest tile %d." % (score, maxval))
-    print("Number of Moves %d; Time per Move %f" % (moveno, (time.time() - start) / moveno))
+    print("Number of Moves %d; Time per Move %f" % (moveno, timepermove))
     print("The board: ")
     print(board)
+    writeCSV(score, maxval, moveno, timepermove)
 
 def parse_args(argv):
     import argparse
@@ -113,6 +115,29 @@ def main(argv):
     play_game(gamectrl)
     return gamectrl
 
+csv_file = "out.csv"
+def createCSV():
+    global csv_file
+    csv_file = "stats_" + ai.filename + "_" + str(int(time.time())) + ".csv"
+    try:
+        f = open(csv_file, "w")
+    except IOError:
+        print("Cannot open file " + csv_file)
+    else:
+        with f:
+            data = "score;highest tile;number of moves;time per move\n"
+            f.write(data)
+
+def writeCSV(score, maxval, moveno, time):
+    try:
+        f = open(csv_file, "a")
+    except IOError:
+        print("Cannot open file " + csv_file)
+    else:
+        with f:
+            data = "%d; %d; %d; %f \n" % (score, maxval, moveno, time)
+            f.write(data)
+
 if __name__ == '__main__':
     import sys
     times = 10
@@ -122,6 +147,7 @@ if __name__ == '__main__':
     print("Starting Game...")
     print("Filename: %s" % (ai.filename))
     print("************************")
+    createCSV()
 
     arglength = len(sys.argv)
     try:
