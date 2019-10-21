@@ -9,12 +9,19 @@ searchai_stats = [{ "name": "Heuristic", "csv": "searchai_heuristic.csv", "df": 
     { "name": "Diagonal", "csv": "searchai_diagonal.csv", "df": []},
     { "name": "Square", "csv": "searchai_square.csv", "df": []}]
 
-heuristicai_stats = [{ "name": "heuristic", "csv": ".csv", "df": []},]
+heuristicai_stats = [{ "name": "Random Agent", "csv": "heuristicai_0_random_agent.csv", "df": []},
+    #{ "name": "Pretty Basic", "csv": "heuristicai_jenny1_pretty_basic.csv", "df": []},
+    { "name": "Pretty Good", "csv": "heuristicai_jenny2_pretty_good.csv", "df": []},
+    #{ "name": "Check Score", "csv": "heuristicai_jenny3_check_score.csv", "df": []},
+    #{ "name": "Check Score 2", "csv": "heuristicai_jenny4_check_score_altered_weights.csv", "df": []},
+    { "name": "Check Score", "csv": "heuristicai_jenny5_check_score_minimize_up.csv", "df": []},
+    { "name": "Hirarchial Rating", "csv": "heuristicai_yves.csv", "df": []}]
 
 def main():
-    generatePlots(searchai_stats, "Search AI")
-    #generatePlots(heuristicai_stats)
-def generatePlots(stats, title):
+    generatePlots(searchai_stats, "Search AI", True)
+    generatePlots(heuristicai_stats, "Heuristic AI", False)
+
+def generatePlots(stats, title, isHigh):
     data_scores = []
     data_tiles = []
     data_time = []
@@ -61,35 +68,48 @@ def generatePlots(stats, title):
     plt.show()
 
     # Barcharts
+
+    tile_occurences = {}
+    if isHigh:
+        tile_occurences = {
+            '256': 0,
+            '512': 0,
+            '1024': 0,
+            '2048': 0,
+            '4096': 0,
+            '8192': 0}
+    else:
+        tile_occurences = {
+                '32': 0,
+                '64': 0,
+                '128': 0,
+                '256': 0,
+                '512': 0,
+                '1024': 0,
+                '2048': 0}
+
     x = 0.0
-    i = 0
-    n = 6 # Number of tiles to display
+    idx = 0
+    n = len(tile_occurences) # Number of tiles to display
     barWidth = 1.0 / (len(stats) + 1)
     ind = np.arange(n)
     fig1, ax1 = plt.subplots()
     #ax1 = fig1.add_subplot()
-    tile_occurences = {}
     bars=[]
+    colors = ['#efb400', '#ff7f0e', '#c31b1c', '#136095', '#2ca02c'];
     for stat in stats:
         df = stat['df'].sort_values(by=['highest tile'])
         labels = list(map(str, Counter(df['highest tile'].tolist()).keys()))
         values = list(Counter(df['highest tile'].tolist()).values())
-
-        tile_occurences = {'256': 0,
-                '512': 0,
-                '1024': 0,
-                '2048': 0,
-                '4096': 0,
-                '8192': 0,}
 
         for i in range(len(labels)):
             tile_occurences[str(labels[i])] = values[i] / sum(values) * 100
             
         print(tile_occurences)
 
-        bars.append(ax1.bar(ind + x, tile_occurences.values(), width = barWidth, label = stat['name']))
+        bars.append(ax1.bar(ind + x, tile_occurences.values(), width = barWidth, label = stat['name'], color = colors[idx]))
         x+= barWidth
-        i+=1
+        idx+=1
     ax1.set_xticks(ind + barWidth)
     ax1.set_xticklabels(tile_occurences.keys())
     ax1.legend()
