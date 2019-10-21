@@ -30,12 +30,22 @@ def find_best_move(board):
     bestmove = -1
 
     depth = 1
+    multiprocess = False
 
     emptyTiles = countEmptyTiles(board)
     biggestTile = getHighestTile(board)
     start = time.time()
 
-    result = [score_toplevel_move(x, board, 1) for x in range(len(move_args))]
+    if multiprocess:
+        result = [score_toplevel_move(x, board, depth) for x in range(len(move_args))]
+    else :
+        result = []
+        r = []  
+        for x in range(len(move_args)):
+            r.append(p.apply_async(score_toplevel_move, (x, board, 2)))
+        for i in range(len(r)):
+            result.append(r[i].get())
+    
 
     """if emptyTiles > 8 or biggestTile < 1024:
         result = [score_toplevel_move(x, board, 1) for x in range(len(move_args))]
