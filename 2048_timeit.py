@@ -61,7 +61,7 @@ def play_game(gamectrl):
             break
         """print("%010.6f: Score %d, Move %d: %s" % (time.time() - start, gamectrl.get_score(), moveno, movename(move)))"""
         gamectrl.execute_move(move)
-        if moveno >= 5:
+        if moveno >= 3:
             break
 
     timepermove = (time.time() - start) / moveno
