@@ -40,7 +40,7 @@ def find_best_move(board):
         result = []
         r = []  
         for x in range(len(move_args)):
-            r.append(p.apply_async(score_toplevel_move, (x, board, 2)))
+            r.append(p.apply_async(score_toplevel_move, (x, board, depth)))
         for i in range(len(r)):
             result.append(r[i].get())
     else :
