@@ -120,14 +120,18 @@ def generatePlots(stats, title, isHigh):
     plt.ylim([0,70])
     plt.show()
 
+    print("<table><caption>Comparison of the implemented heuristic functions</caption>")
+    print("<tbody><tr><th>Algorithm Name</th><th>Highscore</th><th>Average Score</th><th>Highest Tile</th><th>Time Per Move [s]</th></tr>")
     # sonstige Stats
     for stat in stats:
-        print(stat['name'])
+        """print()
         print("Highscore: " + str(max(stat['df']['score'])))
         print("Highest tile reached: " + str(max(stat['df']['highest tile'])))
         print("Average Time per move: " + str(stat['df']['time per move'].mean()))
-        print()
+        print()"""
+        print("<tr><td>%s</td><td>%d</td><td>%d</td><td>%f</td></tr>" % (stat['name'], max(stat['df']['score']), max(stat['df']['highest tile']), stat['df']['time per move'].mean()))
 
+    print("</tbody></table>")
 
 if __name__ == '__main__':
     main();
