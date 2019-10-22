@@ -26,13 +26,13 @@ def main():
     x = np.arange(0, 9, 1);
 
     # Trend für search ai times
-    plt.plot(x, 0.0003 * np.exp(3.0395 * x), label='Trend line for one process', color='#ffa524', linestyle='dotted')
-    plt.plot(depth, times, label='One process', color='#ff7f0e', marker='o', linestyle='solid')
+    plt.plot(x, 0.0003 * np.exp(3.0395 * x), label='Trend line for singleprocess', color='#ffa524', linestyle='dotted')
+    plt.plot(depth, times, label='Singleprocess', color='#ff7f0e', marker='o', linestyle='solid')
 
     # Trend für multiple process search ai times
-    plt.plot(x, 0.0003 * np.exp(2.7956 * x), label='Trend line for multiple processes', color='#f15e3e',
+    plt.plot(x, 0.0003 * np.exp(2.7956 * x), label='Trend line for multiprocesses', color='#f15e3e',
              linestyle='dotted')
-    plt.plot(depth, multiprocess_times, label='Multiple processes', color='#c31b1c', marker='o', linestyle='solid')
+    plt.plot(depth, multiprocess_times, label='Multiprocesses', color='#c31b1c', marker='o', linestyle='solid')
 
     plt.title("Snakey - Average Time per Move Depending of Depth")
     plt.legend()
