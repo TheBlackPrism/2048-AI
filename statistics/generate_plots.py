@@ -129,7 +129,7 @@ def generatePlots(stats, title, isHigh):
         print("Highest tile reached: " + str(max(stat['df']['highest tile'])))
         print("Average Time per move: " + str(stat['df']['time per move'].mean()))
         print()"""
-        print("<tr><td>%s</td><td>%d</td><td>%d</td><td>%f</td></tr>" % (stat['name'], max(stat['df']['score']), max(stat['df']['highest tile']), stat['df']['time per move'].mean()))
+        print("<tr><td>%s</td><td>%d</td><td>%d</td><td>%d</td><td>%f</td></tr>" % (stat['name'], max(stat['df']['score']), stat['df']['score'].mean(), max(stat['df']['highest tile']), stat['df']['time per move'].mean()))
 
     print("</tbody></table>")
 
